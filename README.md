@@ -41,6 +41,16 @@ Move um objeto no espaço do universo.
 	<br>
 </p>
 
+Matriz de Rotação:
+Rotaciona um objeto no espaço do universo.
+
+<p align="center">
+	<br>
+	<img src="./Prints/rotationy.png"/ width=510px height=240px>
+	<h5 align="center">Figure 3 - Matriz de Rotação</h5>
+	<br>
+</p>
+
 No código, definimos as matrizes usando a biblioteca GLM, que recebe colunas no formato de linha:
 
 ```
