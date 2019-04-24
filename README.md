@@ -36,7 +36,7 @@ Move um objeto no espaço do universo.
 
 <p align="center">
 	<br>
-	<img src="./Prints/translation.png"/ width=510px height=240px>
+	<img src="./Prints/translation3d.png"/ width=510px height=240px>
 	<h5 align="center">Figure 2 - Matriz de Translação</h5>
 	<br>
 </p>
