@@ -95,6 +95,21 @@ Na implementação, são recebidos os parâmetros e é gerado o vetor distância
     mat4x4 mView = Bt * T;
 ```
 
+### 3 - Do Espaço da Câmera para o Espaço de Recorte
+O espaço de recorte é responsável por transformar os vértices do objeto permitindo a aplicação da distorção perspectiva. A semelhança de triângulos foi usada para o cálculo da matriz de projeção que é combinada à uma matriz de translação que corrige a distância da câmera ao plano de visão.
+No pipeline, o valor d representa a distância focal da câmera que observa a cena.
+```
+//Matriz projeção
+
+    int d = 1;
+
+    mat4x4 mProjection = mat4x4(1, 0, 0,     0   ,
+                                0, 1, 0,     0   ,
+                                0, 0, 1, -(1 / d),
+                                0, 0, d,     0  );
+
+```
+
 
 # Referências Bibliográficas
 
