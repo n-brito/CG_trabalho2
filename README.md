@@ -41,6 +41,30 @@ Move um objeto no espaço do universo.
 	<br>
 </p>
 
+No código, definimos as matrizes usando a biblioteca GLM, que recebe colunas no formato de linha:
+
+```
+//Matriz Model
+
+    mat4x4 mTranslation = mat4x4(1, 0, 0, 0,
+                                 0, 1, 0, 0,
+                                 0, 0, 1, 0,
+                                tx, ty, tz, 1); //tx, ty e tz são os valores de translação
+
+    mat4x4 mScale = mat4x4(sx, 0, 0,  0,
+                           0, sy, 0,  0,
+                           0,  0, sz, 0,
+                           0,  0, 0,  1); //sx, sy e sz são os valores de escala
+
+    mat4x4 mRotate = mat4x4(cos(angulo), 0, -sin(angulo), 0,
+                                 0,      1,       0,      0,
+                            sin(angulo), 0, cos(angulo),  0,
+                                 0       0,       0,      1); //rotação no eixo Y, em relação ao ângulo
+
+    mat4x4 mModel = mScale * mTranslation * mRotate; //Construção da matriz Model
+
+```
+
 
 # Referências Bibliográficas
 
