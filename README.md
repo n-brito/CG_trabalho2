@@ -1,4 +1,4 @@
-# CG_trabalho2
+# Pipeline Gráfico em OpenGL
 ---
 
 ## Introdução
@@ -37,7 +37,7 @@ Move um objeto no espaço do universo.
 <p align="center">
 	<br>
 	<img src="./Prints/translation3d.png"/ width=510px height=240px>
-	<h5 align="center">Figure 2 - Matriz de Translação</h5>
+	<h5 align="center">Figure 3 - Matriz de Translação</h5>
 	<br>
 </p>
 
@@ -47,7 +47,7 @@ Rotaciona um objeto no espaço do universo.
 <p align="center">
 	<br>
 	<img src="./Prints/rotationy.png"/ width=510px height=240px>
-	<h5 align="center">Figure 3 - Matriz de Rotação</h5>
+	<h5 align="center">Figure 4 - Matriz de Rotação</h5>
 	<br>
 </p>
 
@@ -121,10 +121,10 @@ No pipeline, o valor d representa a distância focal da câmera que observa a ce
 ```
 
 ### 4 - Do Espaço de Recorte para o Espaço Canônico
-Quando a transformação para o espaço de recorte é aplicada, o valor da coordenada homogênea (w) dos vértices se torna um valor provavelmente diferente de 1, é preciso transformar os vértices de volta para o espaço euclidiano para que possam ser exibidos em uma tela bidimensional com a distorção perspectiva.
+Quando a transformação para o espaço de recorte é aplicada, o valor da coordenada homogênea (w) dos vértices se torna um valor provavelmente diferente de 1, é preciso transformar os vértices de volta para o espaço euclidiano para que possam ser exibidos em uma tela bidimensional com a distorção perspectiva. Para que a coordenada homogênea retorne ao valor 1, todas as coordenadas do objeto são divididas pelo valor de w neste momento.
 
 ### 5 - Do Espaço Canônico para o Espaço de Tela
-A última etapa do pipeline transforma os vértices para o espaço de tela, Essa transformação consiste em uma matriz que inverte o eixo Y, uma que adapta o tamanho do objeto ao lado positivo do plano euclidiano e uma matriz que transforma os vértices para que possam ser rasterizados nas coordenadas de tela.
+A última etapa do pipeline transforma os vértices para o espaço de tela. Essa transformação consiste em uma matriz que inverte o eixo Y, uma que adapta o tamanho do objeto ao lado positivo do plano euclidiano e uma matriz que transforma os vértices para que possam ser rasterizados nas coordenadas de tela.
 
 ```
 //Matriz viewport
@@ -171,7 +171,6 @@ Carregando o modelo e desenhando:
 
 Notas de Aula do Prof. Christian
 
-http://matheuspraxedescg.blogspot.com/2016/10/pipeline-grafico.html
 
 
 ---
