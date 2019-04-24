@@ -140,6 +140,22 @@ A última etapa do pipeline transforma os vértices para o espaço de tela, Essa
     mat4x4 mViewport = mViewTranslate * mViewScale * mViewInvert;
 ```
 
+Carregando o modelo e desenhando:
+```
+    vector<glm::vec4> vertices = loadModel("monkey.obj");
+
+    for (int i = 0; i < vertices.size(); i++)
+    {
+        vertices[i] = mPipeline * vertices[i];
+        vertices[i] = vertices[i] / vertices[i].w;
+    }
+
+    for (int i = 0; i < vertices.size(); i += 3)
+    {
+        drawTriangle((int)vertices[i].x, (int)vertices[i].y, (int)vertices[i + 1].x, (int)vertices[i + 1].y, (int)vertices[i + 2].x, (int)vertices[i + 2].y);
+    }
+```
+
 
 # Referências Bibliográficas
 
