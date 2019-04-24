@@ -65,6 +65,36 @@ No código, definimos as matrizes usando a biblioteca GLM, que recebe colunas no
 
 ```
 
+### 2 - Do Espaço do Universo para o Espaço da Câmera
+Depois de os objetos estarem devidamente posicionados no Espaço do Universo, é preciso definir uma câmera que funcionará como ponto de vista do espaço montado. Para construção da câmera, são necessárias sua posição, o vetor up (que define sua orientação) e o vetor look at, que indica o ponto para qual a câmera está direcionada. 
+
+Na implementação, são recebidos os parâmetros e é gerado o vetor distância com base no look at e na posição para o cálculo do sistema de coordenadas da câmera.  
+```
+  //Matriz View
+
+    vec3 lookatCam = vec3(0, 0, 0);
+    vec3 posCam = vec3(3, 2, 2);
+    vec3 upCam = vec3(0, 1, 0);
+
+    vec3 dirCam = lookatCam - posCam;
+
+    vec3 zCam = -normalize(dirCam);
+    vec3 xCam = normalize(cross(upCam, zCam));
+    vec3 yCam = cross(zCam, xCam);
+
+    mat4x4 Bt = mat4x4(xCam[0], yCam[0], zCam[0], 0,
+                       xCam[1], yCam[1], zCam[1], 0,
+                       xCam[2], yCam[2], zCam[2], 0,
+                       0, 0, 0, 1);
+
+    mat4x4 T = mat4x4(1, 0, 0, 0,
+                      0, 1, 0, 0,
+                      0, 0, 1, 0,
+                      -dirCam[0], -dirCam[1], -dirCam[2], 1);
+
+    mat4x4 mView = Bt * T;
+```
+
 
 # Referências Bibliográficas
 
