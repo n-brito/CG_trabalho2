@@ -171,6 +171,7 @@ Carregando o modelo e desenhando:
 
 Notas de Aula do Prof. Christian
 
+http://matheuspraxedescg.blogspot.com/2016/10/pipeline-grafico.html
 
 
 ---
