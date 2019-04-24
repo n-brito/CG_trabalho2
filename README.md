@@ -110,6 +110,36 @@ No pipeline, o valor d representa a distância focal da câmera que observa a ce
 
 ```
 
+### 4 - Do Espaço de Recorte para o Espaço Canônico
+Quando a transformação para o espaço de recorte é aplicada, o valor da coordenada homogênea (w) dos vértices se torna um valor provavelmente diferente de 1, é preciso transformar os vértices de volta para o espaço euclidiano para que possam ser exibidos em uma tela bidimensional com a distorção perspectiva.
+
+### 5 - Do Espaço Canônico para o Espaço de Tela
+A última etapa do pipeline transforma os vértices para o espaço de tela, Essa transformação consiste em uma matriz que inverte o eixo Y, uma que adapta o tamanho do objeto ao lado positivo do plano euclidiano e uma matriz que transforma os vértices para que possam ser rasterizados nas coordenadas de tela.
+
+```
+//Matriz viewport
+
+    int w = 512;
+    int h = 512;
+
+    mat4x4 mViewTranslate = mat4x4(1, 0, 0, 0,
+                                   0, 1, 0, 0,
+                                   0, 0, 1, 0,
+                                   (w - 1) / 2, (h - 1) / 2, 0, 1);
+
+    mat4x4 mViewScale = mat4x4(w / 2, 0, 0, 0,
+                               0, h / 2, 0, 0,
+                               0, 0, 1, 0,
+                               0, 0, 0, 1);
+
+    mat4x4 mViewInvert = mat4x4(1, 0, 0, 0,
+                                0, -1, 0, 0,
+                                0, 0, 1, 0,
+                                0, 0, 0, 1);
+
+    mat4x4 mViewport = mViewTranslate * mViewScale * mViewInvert;
+```
+
 
 # Referências Bibliográficas
 
